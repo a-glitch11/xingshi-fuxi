@@ -1,0 +1,5628 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>形势与政策期末复习题库</title>
+  <style>
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #1b1f24;
+  --muted: #68707d;
+  --line: #d9dee7;
+  --primary: #2367c5;
+  --primary-dark: #174f9e;
+  --accent: #0b7f6b;
+  --danger: #ba3b35;
+  --danger-soft: #fff1ef;
+  --ok-soft: #edf8f2;
+  --warn-soft: #fff6df;
+  --shadow: 0 16px 42px rgba(27, 31, 36, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 18px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 22px;
+}
+
+h3 {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.header-stats {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: right;
+}
+
+.app-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.section-head,
+.quiz-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.mode-switch {
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.mode-button,
+.ghost-button,
+.primary-button,
+.entry-button,
+.filter-button {
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  padding: 10px 14px;
+  font-weight: 700;
+}
+
+.mode-button {
+  min-width: 72px;
+  border-color: transparent;
+  background: transparent;
+}
+
+.mode-button.active,
+.primary-button,
+.entry-button.primary,
+.filter-button:hover {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.primary-button:hover,
+.entry-button.primary:hover {
+  background: var(--primary-dark);
+}
+
+.ghost-button:hover,
+.entry-button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.entry-button.danger {
+  color: var(--danger);
+}
+
+.entry-button.danger:hover {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.quick-grid,
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.button-grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.entry-button,
+.filter-button {
+  min-height: 58px;
+  text-align: center;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fafbfc;
+}
+
+.control-row input[type="number"] {
+  width: 92px;
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.check-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  color: var(--muted);
+}
+
+.filter-block + .filter-block {
+  margin-top: 22px;
+}
+
+.quiz-progress {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e7ebf1;
+  margin-bottom: 18px;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 160ms ease;
+}
+
+.question-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
+}
+
+.question-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  border-radius: 999px;
+  background: #eef2f7;
+  color: #384150;
+  padding: 2px 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.question-title {
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.option-list {
+  display: grid;
+  gap: 10px;
+}
+
+.option-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+}
+
+.option-item input {
+  margin-top: 5px;
+}
+
+.option-key {
+  font-weight: 800;
+  min-width: 24px;
+}
+
+.option-item.correct {
+  border-color: #7abf93;
+  background: var(--ok-soft);
+}
+
+.option-item.wrong {
+  border-color: #d78077;
+  background: var(--danger-soft);
+}
+
+.feedback {
+  margin-top: 18px;
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--warn-soft);
+  border: 1px solid #f0d797;
+}
+
+.feedback.good {
+  background: var(--ok-soft);
+  border-color: #91caa4;
+}
+
+.feedback.bad {
+  background: var(--danger-soft);
+  border-color: #dfaaa5;
+}
+
+.answer-line {
+  margin: 0;
+  font-weight: 800;
+}
+
+.explanation {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.action-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.action-row button {
+  min-width: 110px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.result-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: #fafbfc;
+}
+
+.result-value {
+  display: block;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.result-label {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.wrong-list {
+  display: grid;
+  gap: 12px;
+}
+
+.wrong-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fff;
+}
+
+.wrong-card h3 {
+  margin-bottom: 8px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+
+  .header-stats {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .section-head,
+  .quiz-top,
+  .action-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .quick-grid,
+  .button-grid,
+  .button-grid.three,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .control-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .control-row input[type="number"] {
+    width: 100%;
+  }
+
+  .question-title {
+    font-size: 18px;
+  }
+
+  .action-row button {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">离线题库</p>
+      <h1>形势与政策期末复习</h1>
+    </div>
+    <div class="header-stats" id="headerStats"></div>
+  </header>
+
+  <main class="app-shell">
+    <section class="panel" id="homeView">
+      <div class="section-head">
+        <h2>开始练习</h2>
+      </div>
+
+      <div class="quick-grid">
+        <button class="entry-button primary" type="button" data-action="all">全部练习</button>
+        <button class="entry-button" type="button" data-action="wrong">只练错题</button>
+        <button class="entry-button" type="button" data-action="random">随机练习</button>
+        <button class="entry-button danger" type="button" data-action="clearWrong">清空错题</button>
+      </div>
+
+      <div class="control-row">
+        <label for="randomCount">随机抽题数</label>
+        <input id="randomCount" type="number" min="1" max="160" value="30">
+        <label class="check-line">
+          <input id="shuffleQuestions" type="checkbox" checked>
+          打乱题目
+        </label>
+        <label class="check-line">
+          <input id="shuffleOptions" type="checkbox" checked>
+          打乱选项
+        </label>
+      </div>
+
+      <div class="filter-block">
+        <h3>按单元练习</h3>
+        <div class="button-grid" id="unitButtons"></div>
+      </div>
+
+      <div class="filter-block">
+        <h3>按题型练习</h3>
+        <div class="button-grid three" id="typeButtons"></div>
+      </div>
+    </section>
+
+    <section class="panel hidden" id="quizView">
+      <div class="quiz-top">
+        <button class="ghost-button" type="button" id="backHome">返回首页</button>
+        <div class="quiz-progress" id="quizProgress"></div>
+      </div>
+      <div class="progress-bar" aria-hidden="true">
+        <span id="progressFill"></span>
+      </div>
+
+      <article class="question-card" id="questionCard"></article>
+
+      <div class="action-row">
+        <button class="ghost-button" type="button" id="prevQuestion">上一题</button>
+        <button class="primary-button" type="button" id="submitAnswer">提交</button>
+        <button class="primary-button hidden" type="button" id="nextQuestion">下一题</button>
+      </div>
+    </section>
+
+    <section class="panel hidden" id="resultView">
+      <div class="section-head">
+        <h2>本轮结果</h2>
+        <button class="ghost-button" type="button" id="resultHome">返回首页</button>
+      </div>
+      <div class="result-grid" id="resultStats"></div>
+      <div class="wrong-list" id="wrongList"></div>
+    </section>
+  </main>
+
+  <script>
+// 形势与政策期末复习题库 - 自动结构化抽取自 汇总.txt（新版）
+// 4组：二单元/三单元/四单元/五单元，共 160 题
+window.QUESTIONS = [
+  {
+    "id": "u2-s-01",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "党的二十届四中全会审议通过《中共中央关于制定国民经济和社会发展第十五个五年规划的建议》的时间是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2024年10月"
+      },
+      {
+        "key": "B",
+        "text": "2025年7月"
+      },
+      {
+        "key": "C",
+        "text": "2026年10月"
+      },
+      {
+        "key": "D",
+        "text": "2025年10月"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-02",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "我国基本养老保险和基本医疗保险参保率都在( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "93%以上"
+      },
+      {
+        "key": "B",
+        "text": "98%以上"
+      },
+      {
+        "key": "C",
+        "text": "95%以上"
+      },
+      {
+        "key": "D",
+        "text": "90%以上"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-03",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "2025年版市场准入负面清单事项缩减至( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "106项"
+      },
+      {
+        "key": "B",
+        "text": "95项"
+      },
+      {
+        "key": "C",
+        "text": "123项"
+      },
+      {
+        "key": "D",
+        "text": "115项"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-04",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "从1981年\"六五\"计划开始，五年计划编制恢复了由哪个机构提出规划建议的做法？( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "国务院"
+      },
+      {
+        "key": "B",
+        "text": "全国政协"
+      },
+      {
+        "key": "C",
+        "text": "全国人大"
+      },
+      {
+        "key": "D",
+        "text": "中央全会"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-05",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "\"十四五\"时期，我国对世界经济增长的贡献率保持在( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "30%左右"
+      },
+      {
+        "key": "B",
+        "text": "25%左右"
+      },
+      {
+        "key": "C",
+        "text": "35%左右"
+      },
+      {
+        "key": "D",
+        "text": "20%左右"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-06",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "\"十五五\"时期经济社会发展必须遵循的原则中，作为根本价值取向的是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "坚持人民至上"
+      },
+      {
+        "key": "B",
+        "text": "坚持统筹发展和安全"
+      },
+      {
+        "key": "C",
+        "text": "坚持党的全面领导"
+      },
+      {
+        "key": "D",
+        "text": "坚持高质量发展"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-07",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "\"十五五\"规划的时间跨度是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2031-2035年"
+      },
+      {
+        "key": "B",
+        "text": "2026-2030年"
+      },
+      {
+        "key": "C",
+        "text": "2021-2025年"
+      },
+      {
+        "key": "D",
+        "text": "2025-2029年"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-08",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "\"十五五\"时期的一个鲜明特征是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "国内大循环为主体"
+      },
+      {
+        "key": "B",
+        "text": "绿色低碳转型加速"
+      },
+      {
+        "key": "C",
+        "text": "大国关系牵动国际形势，国际形势演变深刻影响国内发展"
+      },
+      {
+        "key": "D",
+        "text": "科技革命引领发展"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-09",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "中欧班列通达欧洲多少个国家和城市？( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "30个国家250个城市"
+      },
+      {
+        "key": "B",
+        "text": "20个国家200个城市"
+      },
+      {
+        "key": "C",
+        "text": "22个国家210个城市"
+      },
+      {
+        "key": "D",
+        "text": "26个国家232个城市"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-10",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "2025年我国在全球创新指数排名中的位次是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "第9位"
+      },
+      {
+        "key": "B",
+        "text": "第10位"
+      },
+      {
+        "key": "C",
+        "text": "第12位"
+      },
+      {
+        "key": "D",
+        "text": "第8位"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-11",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "我国从\"一五\"计划到\"十四五\"规划，共制定实施了多少个五年规划(计划)？( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "13个"
+      },
+      {
+        "key": "B",
+        "text": "12个"
+      },
+      {
+        "key": "C",
+        "text": "14个"
+      },
+      {
+        "key": "D",
+        "text": "15个"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-12",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "新能源汽车产销量连续多少年保持全球第一？( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "11年"
+      },
+      {
+        "key": "B",
+        "text": "9年"
+      },
+      {
+        "key": "C",
+        "text": "8年"
+      },
+      {
+        "key": "D",
+        "text": "10年"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-13",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "从哪个五年计划开始，我国将\"国民经济发展计划\"改称为\"国民经济和社会发展计划\"？( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "\"七五\"计划"
+      },
+      {
+        "key": "B",
+        "text": "\"五五\"计划"
+      },
+      {
+        "key": "C",
+        "text": "\"八五\"计划"
+      },
+      {
+        "key": "D",
+        "text": "\"六五\"计划"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-14",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "我国累计培育形成多少个新兴产业领域国家先进制造业集群？( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "40多个"
+      },
+      {
+        "key": "B",
+        "text": "50多个"
+      },
+      {
+        "key": "C",
+        "text": "70多个"
+      },
+      {
+        "key": "D",
+        "text": "60多个"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u2-s-15",
+    "unit": "二单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "\"十四五\"时期，新增劳动力平均受教育年限超过( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "12年"
+      },
+      {
+        "key": "B",
+        "text": "14年"
+      },
+      {
+        "key": "C",
+        "text": "15年"
+      },
+      {
+        "key": "D",
+        "text": "13年"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-01",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "\"十五五\"时期夯实基础需要从哪些方面着力？( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "破除瓶颈制约"
+      },
+      {
+        "key": "B",
+        "text": "扩大对外开放"
+      },
+      {
+        "key": "C",
+        "text": "提升国民素质"
+      },
+      {
+        "key": "D",
+        "text": "补强短板弱项"
+      },
+      {
+        "key": "E",
+        "text": "加快城镇化建设"
+      },
+      {
+        "key": "F",
+        "text": "巩固拓展优势"
+      }
+    ],
+    "answer": [
+      "A",
+      "D",
+      "F"
+    ],
+    "rawAnswerText": "ADF",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-02",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "\"十四五\"时期我国发展取得的重大成就包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "民生福祉持续增进"
+      },
+      {
+        "key": "B",
+        "text": "经济总量接连突破"
+      },
+      {
+        "key": "C",
+        "text": "美丽中国铺展新画卷"
+      },
+      {
+        "key": "D",
+        "text": "科技创新不断突破"
+      },
+      {
+        "key": "E",
+        "text": "新质生产力培育壮大"
+      },
+      {
+        "key": "F",
+        "text": "全面深化改革开放走深走实"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "ABCEF",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-03",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "\"十五五\"规划建议明确的指导思想和\"六个坚持\"原则的意义包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "与其他国家发展规划没有区别"
+      },
+      {
+        "key": "B",
+        "text": "是对改革开放以来特别是新时代经济社会发展经验的科学总结"
+      },
+      {
+        "key": "C",
+        "text": "是中国共产党不断深化对经济社会发展规律性认识的重大成果"
+      },
+      {
+        "key": "D",
+        "text": "为\"十五五\"时期经济社会发展提供了基本遵循"
+      },
+      {
+        "key": "E",
+        "text": "完全照搬西方发展经验"
+      }
+    ],
+    "answer": [
+      "B",
+      "C",
+      "D"
+    ],
+    "rawAnswerText": "BCD",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-04",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "中国式现代化的特征包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "中国共产党领导的社会主义现代化"
+      },
+      {
+        "key": "B",
+        "text": "人与自然和谐共生的现代化"
+      },
+      {
+        "key": "C",
+        "text": "持续时间最长的现代化"
+      },
+      {
+        "key": "D",
+        "text": "物质文明和精神文明相协调的现代化"
+      },
+      {
+        "key": "E",
+        "text": "全体人民共同富裕的现代化"
+      },
+      {
+        "key": "F",
+        "text": "人口规模巨大的现代化"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "ABDEF",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-05",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "\"五位一体\"总体布局包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "经济建设"
+      },
+      {
+        "key": "B",
+        "text": "政治建设"
+      },
+      {
+        "key": "C",
+        "text": "生态文明建设"
+      },
+      {
+        "key": "D",
+        "text": "社会建设"
+      },
+      {
+        "key": "E",
+        "text": "乡村振兴"
+      },
+      {
+        "key": "F",
+        "text": "文化建设"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "F"
+    ],
+    "rawAnswerText": "ABCDF",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-06",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "从发展路径看，\"十五五\"发展需要把握的关键要素包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "以强化科技创新为基本引领"
+      },
+      {
+        "key": "B",
+        "text": "以改革创新为根本动力"
+      },
+      {
+        "key": "C",
+        "text": "以满足人民日益增长的美好生活需要为根本目的"
+      },
+      {
+        "key": "D",
+        "text": "以推动高质量发展为主题"
+      },
+      {
+        "key": "E",
+        "text": "以扩大开放为首要任务"
+      },
+      {
+        "key": "F",
+        "text": "以全面从严治党为根本保障"
+      }
+    ],
+    "answer": [
+      "B",
+      "C",
+      "D",
+      "F"
+    ],
+    "rawAnswerText": "BCDF",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-07",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "\"美丽中国\"建设取得的成就包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "完全消除所有环境污染"
+      },
+      {
+        "key": "B",
+        "text": "清洁能源快速发展，建起全球最大可再生能源体系"
+      },
+      {
+        "key": "C",
+        "text": "贡献了全球约1/4的新增绿化面积"
+      },
+      {
+        "key": "D",
+        "text": "新能源汽车产销量连续11年全球第一"
+      },
+      {
+        "key": "E",
+        "text": "全社会消费每3度电中有1度是绿电"
+      }
+    ],
+    "answer": [
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "BCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-08",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "我国发展的国内优势包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "经济基础稳、优势多、韧性强、潜能大"
+      },
+      {
+        "key": "B",
+        "text": "丰富人才资源优势"
+      },
+      {
+        "key": "C",
+        "text": "超大规模市场优势"
+      },
+      {
+        "key": "D",
+        "text": "中国特色社会主义制度优势"
+      },
+      {
+        "key": "E",
+        "text": "完整产业体系优势"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-09",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "我国五年规划编制实施的制度安排包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接由国务院公布实施"
+      },
+      {
+        "key": "B",
+        "text": "全国政协会议提出修改意见"
+      },
+      {
+        "key": "C",
+        "text": "向社会公开征求意见"
+      },
+      {
+        "key": "D",
+        "text": "全国人大审查批准"
+      },
+      {
+        "key": "E",
+        "text": "中央全会提出规划建议"
+      },
+      {
+        "key": "F",
+        "text": "国务院编制规划纲要"
+      }
+    ],
+    "answer": [
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "DEF",
+    "explanation": ""
+  },
+  {
+    "id": "u2-m-10",
+    "unit": "二单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "我国编制和实施五年规划的显著特点包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "定位愈加科学"
+      },
+      {
+        "key": "B",
+        "text": "程序更为完善"
+      },
+      {
+        "key": "C",
+        "text": "认识不断深化"
+      },
+      {
+        "key": "D",
+        "text": "主题一以贯之"
+      },
+      {
+        "key": "E",
+        "text": "内容日益充实"
+      },
+      {
+        "key": "F",
+        "text": "成果不断涌现"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-01",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "党的二十届三中全会于2025年10月在北京召开，审议通过了\"十五五\"规划建议。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-02",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "我国基本养老保险和基本医疗保险参保率都在90%以上。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-03",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "2025年版市场准入负面清单事项为123项。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-04",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "从1986年\"七五\"计划开始，恢复了由党中央提出编制五年计划建议的做法。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-05",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "\"十四五\"时期，我国对世界经济增长的贡献率保持在50%左右。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-06",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "\"十五五\"时期经济社会发展必须遵循的原则中，坚持高质量发展是根本价值取向。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-07",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "\"十五五\"规划的时间跨度是2025年至2029年。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-08",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "\"十五五\"时期的一个鲜明特征是国内大循环完全独立于国际循环。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-09",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中欧班列通达欧洲20个国家200个城市。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-10",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "2025年我国在全球创新指数排名中首次跃升至第1位。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-11",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "我国从1954年开始制定实施五年规划(计划)，至今已经实施了14个。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-12",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "新能源汽车产销量连续10年保持全球第一。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-13",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "从\"八五\"计划开始，我国将\"国民经济发展计划\"改称为\"国民经济和社会发展计划\"。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-14",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "我国累计培育形成60多个新兴产业领域国家先进制造业集群。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u2-j-15",
+    "unit": "二单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "新增劳动力平均受教育年限超过14年。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-01",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "数字丝绸之路与“丝路电商”合作成果",
+    "question": "“丝路电商”伙伴国已增加到多少个？",
+    "options": [
+      {
+        "key": "A",
+        "text": "40个"
+      },
+      {
+        "key": "B",
+        "text": "36个"
+      },
+      {
+        "key": "C",
+        "text": "30个"
+      },
+      {
+        "key": "D",
+        "text": "26个"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B（36个）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-02",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "“东数西算”工程八大算力枢纽节点布局",
+    "question": "以下哪个不是“东数西算”工程中的算力枢纽节点？",
+    "options": [
+      {
+        "key": "A",
+        "text": "京津冀枢纽"
+      },
+      {
+        "key": "B",
+        "text": "粤港澳大湾区枢纽"
+      },
+      {
+        "key": "C",
+        "text": "长三角枢纽"
+      },
+      {
+        "key": "D",
+        "text": "东北枢纽"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D（东北枢纽）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-03",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "数字中国关键核心技术攻关方向",
+    "question": "以下哪项技术不属于数字中国建设中重点突破的关键核心技术？",
+    "options": [
+      {
+        "key": "A",
+        "text": "传统纺织"
+      },
+      {
+        "key": "B",
+        "text": "高端芯片"
+      },
+      {
+        "key": "C",
+        "text": "基础软件"
+      },
+      {
+        "key": "D",
+        "text": "量子科技"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A（传统纺织）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-04",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "新型数字基础设施——5G基站建设规模",
+    "question": "截至2025年底，我国5G基站总数达到？",
+    "options": [
+      {
+        "key": "A",
+        "text": "383.8万个"
+      },
+      {
+        "key": "B",
+        "text": "583.8万个"
+      },
+      {
+        "key": "C",
+        "text": "483.8万个"
+      },
+      {
+        "key": "D",
+        "text": "283.8万个"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C（483.8万个）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-05",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "算力基础设施建设——在用算力中心机架规模全球排名",
+    "question": "全国在用算力中心机架数位居全球？",
+    "options": [
+      {
+        "key": "A",
+        "text": "第三"
+      },
+      {
+        "key": "B",
+        "text": "第一"
+      },
+      {
+        "key": "C",
+        "text": "第四"
+      },
+      {
+        "key": "D",
+        "text": "第二"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D（第二）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-06",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "农村地区信息通信网络覆盖——行政村5G通达率",
+    "question": "我国行政村5G通达率已超过？",
+    "options": [
+      {
+        "key": "A",
+        "text": "95%"
+      },
+      {
+        "key": "B",
+        "text": "98%"
+      },
+      {
+        "key": "C",
+        "text": "85%"
+      },
+      {
+        "key": "D",
+        "text": "90%"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A（95%）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-07",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "国产操作系统生态发展——鸿蒙系统设备规模",
+    "question": "鸿蒙系统生态设备总量已突破？",
+    "options": [
+      {
+        "key": "A",
+        "text": "13.9亿台"
+      },
+      {
+        "key": "B",
+        "text": "8.9亿台"
+      },
+      {
+        "key": "C",
+        "text": "11.9亿台"
+      },
+      {
+        "key": "D",
+        "text": "9.9亿台"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C（11.9亿台）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-08",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "人工智能领域自主创新能力——AI专利全球占比",
+    "question": "我国人工智能专利数量占全球总量的比重约为？",
+    "options": [
+      {
+        "key": "A",
+        "text": "40%"
+      },
+      {
+        "key": "B",
+        "text": "50%"
+      },
+      {
+        "key": "C",
+        "text": "70%"
+      },
+      {
+        "key": "D",
+        "text": "60%"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D（60%）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-09",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "数字中国建设面临的挑战与短板",
+    "question": "以下哪个不是数字中国建设面临的挑战？",
+    "options": [
+      {
+        "key": "A",
+        "text": "数字基础设施全球领先"
+      },
+      {
+        "key": "B",
+        "text": "数据要素流通存在堵点"
+      },
+      {
+        "key": "C",
+        "text": "高端芯片“卡脖子”风险"
+      },
+      {
+        "key": "D",
+        "text": "技术原创能力有待提升"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A（数字基础设施全球领先）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-10",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "数字经济核心产业规模与GDP贡献",
+    "question": "截至2024年底，数字经济核心产业增加值占GDP比重达到？",
+    "options": [
+      {
+        "key": "A",
+        "text": "8.5%"
+      },
+      {
+        "key": "B",
+        "text": "11.5%"
+      },
+      {
+        "key": "C",
+        "text": "9.5%"
+      },
+      {
+        "key": "D",
+        "text": "10.5%"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D（10.5%）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-11",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "数据要素市场发展——数据产业规模",
+    "question": "2024年我国数据产业规模达到？",
+    "options": [
+      {
+        "key": "A",
+        "text": "4.86万亿元"
+      },
+      {
+        "key": "B",
+        "text": "5.86万亿元"
+      },
+      {
+        "key": "C",
+        "text": "3.86万亿元"
+      },
+      {
+        "key": "D",
+        "text": "6.86万亿元"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B（5.86万亿元）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-12",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "“人工智能+”行动重点应用领域",
+    "question": "数字中国建设中，“人工智能+”行动主要应用于哪个领域？",
+    "options": [
+      {
+        "key": "A",
+        "text": "手工纺织业"
+      },
+      {
+        "key": "B",
+        "text": "传统造纸业"
+      },
+      {
+        "key": "C",
+        "text": "制造业数字化转型"
+      },
+      {
+        "key": "D",
+        "text": "传统农业种植"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C（制造业数字化转型）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-13",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "算力基础设施建设——算力规模年均增速",
+    "question": "我国算力总规模近5年的年均增速约为？",
+    "options": [
+      {
+        "key": "A",
+        "text": "超20%"
+      },
+      {
+        "key": "B",
+        "text": "超35%"
+      },
+      {
+        "key": "C",
+        "text": "超30%"
+      },
+      {
+        "key": "D",
+        "text": "超25%"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C（超30%）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-14",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "互联网普及与网民规模发展",
+    "question": "截至2025年12月，我国网民规模达到？",
+    "options": [
+      {
+        "key": "A",
+        "text": "9.25亿"
+      },
+      {
+        "key": "B",
+        "text": "11.25亿"
+      },
+      {
+        "key": "C",
+        "text": "10.25亿"
+      },
+      {
+        "key": "D",
+        "text": "12.25亿"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B（11.25亿）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-s-15",
+    "unit": "三单元",
+    "type": "single",
+    "knowledgePoint": "数字惠民服务——电子社保卡覆盖情况",
+    "question": "电子社保卡覆盖人口比例超过？",
+    "options": [
+      {
+        "key": "A",
+        "text": "88%"
+      },
+      {
+        "key": "B",
+        "text": "68%"
+      },
+      {
+        "key": "C",
+        "text": "78%"
+      },
+      {
+        "key": "D",
+        "text": "60%"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C（78%）",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-01",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "数字治理体系——法律法规、数据安全与平台监管",
+    "question": "我国数字治理体系完善的表现包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "法律法规框架构建"
+      },
+      {
+        "key": "B",
+        "text": "数据流通安全规则细化"
+      },
+      {
+        "key": "C",
+        "text": "数字安全产业培育"
+      },
+      {
+        "key": "D",
+        "text": "平台经济监管完善"
+      },
+      {
+        "key": "E",
+        "text": "基础制度不断健全"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-02",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "数字政府建设——“一网通办”与政务服务效能提升",
+    "question": "数字政府建设的重要进展包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "“高效办成一件事”改革"
+      },
+      {
+        "key": "B",
+        "text": "全国一体化政务服务平台完善"
+      },
+      {
+        "key": "C",
+        "text": "“一网通办”全面推进"
+      },
+      {
+        "key": "D",
+        "text": "政务数据共享能力提升"
+      },
+      {
+        "key": "E",
+        "text": "数字大脑城市治理应用"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-03",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "“东数西算”工程——八大算力枢纽节点分布",
+    "question": "“东数西算”工程涉及的算力枢纽节点包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "甘肃枢纽"
+      },
+      {
+        "key": "B",
+        "text": "成渝枢纽"
+      },
+      {
+        "key": "C",
+        "text": "内蒙古枢纽"
+      },
+      {
+        "key": "D",
+        "text": "贵州枢纽"
+      },
+      {
+        "key": "E",
+        "text": "宁夏枢纽"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-04",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "数据要素市场化配置——“数据要素×”三年行动计划",
+    "question": "“数据要素×”三年行动计划重点选取的行业和领域包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "绿色低碳"
+      },
+      {
+        "key": "B",
+        "text": "工业制造"
+      },
+      {
+        "key": "C",
+        "text": "医疗健康"
+      },
+      {
+        "key": "D",
+        "text": "交通运输"
+      },
+      {
+        "key": "E",
+        "text": "金融服务"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-05",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "数智化发展环境优化——治理、素养与国际合作",
+    "question": "优化数智化发展环境的措施包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "深化数智领域国际合作"
+      },
+      {
+        "key": "B",
+        "text": "健全法律法规体系"
+      },
+      {
+        "key": "C",
+        "text": "提升全社会数字素养"
+      },
+      {
+        "key": "D",
+        "text": "优化数字治理"
+      },
+      {
+        "key": "E",
+        "text": "完善平台经济监管"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-06",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "数字经济与实体经济深度融合——三大产业数字化",
+    "question": "数字中国建设中，数字经济与实体经济深度融合的表现包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "工业领域数字化"
+      },
+      {
+        "key": "B",
+        "text": "传统手工业完全替代"
+      },
+      {
+        "key": "C",
+        "text": "服务业领域在线化"
+      },
+      {
+        "key": "D",
+        "text": "制造业智能工厂建设"
+      },
+      {
+        "key": "E",
+        "text": "农业领域智能化"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ACDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-07",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "全球数字治理——我国提出的重要国际倡议",
+    "question": "我国提出的重要全球数字治理倡议包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "《全球数据安全倡议》"
+      },
+      {
+        "key": "B",
+        "text": "《全球人工智能治理倡议》"
+      },
+      {
+        "key": "C",
+        "text": "《全球数字贸易规则倡议》"
+      },
+      {
+        "key": "D",
+        "text": "《全球数字经济伙伴关系协定》"
+      },
+      {
+        "key": "E",
+        "text": "《全球数据跨境流动合作倡议》"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "E"
+    ],
+    "rawAnswerText": "ABE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-08",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "数字领域国际交流合作——多维度合作举措",
+    "question": "数字中国建设中，深化数智领域国际合作的措施包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "持续深化“数字丝绸之路”建设"
+      },
+      {
+        "key": "B",
+        "text": "加强数字人才国际交流"
+      },
+      {
+        "key": "C",
+        "text": "建立健全数据跨境流动管理体系"
+      },
+      {
+        "key": "D",
+        "text": "推动数字基础设施互联互通"
+      },
+      {
+        "key": "E",
+        "text": "积极参与全球数字治理规则制定"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-09",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "数字安全防护体系——技术、管理与治理并重",
+    "question": "数字中国建设中，数字安全防护措施包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "构建全方位数字安全防护体系"
+      },
+      {
+        "key": "B",
+        "text": "加强数字安全技术研发应用"
+      },
+      {
+        "key": "C",
+        "text": "强化网络安全保障"
+      },
+      {
+        "key": "D",
+        "text": "建立健全数据分类分级管理"
+      },
+      {
+        "key": "E",
+        "text": "深化网络空间治理"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-m-10",
+    "unit": "三单元",
+    "type": "multiple",
+    "knowledgePoint": "全面数智化转型路径——产业、政务、文化与融合",
+    "question": "推动经济社会发展全面数智化转型的措施包括？",
+    "options": [
+      {
+        "key": "A",
+        "text": "开展制造业数字化转型行动"
+      },
+      {
+        "key": "B",
+        "text": "培育壮大量子科技等未来产业"
+      },
+      {
+        "key": "C",
+        "text": "提升数字政务服务效能"
+      },
+      {
+        "key": "D",
+        "text": "打造繁荣自信的数字文化"
+      },
+      {
+        "key": "E",
+        "text": "推进实体经济和数字经济深度融合"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-01",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "数字丝绸之路与“丝路电商”合作成果",
+    "question": "“丝路电商”伙伴国已增加到30个。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-02",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "数字政府建设——“数据多跑路”政务服务目标",
+    "question": "数字中国建设中，“数据多跑路、群众不跑腿”已成为政务服务常态。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-03",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "文化旅游领域数字化改造——5A级景区智慧化",
+    "question": "数字中国建设中，全国5A级旅游景区数字化改造完成率已达100%。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-04",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "新型数字基础设施——5G基站全球领先地位",
+    "question": "截至2025年底，我国5G基站总数位居全球第一。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-05",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "算力基础设施建设——在用算力中心机架规模全球排名",
+    "question": "全国在用算力中心机架数位居全球第一。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-06",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "农村地区信息通信网络覆盖——“三通”目标全面实现",
+    "question": "我国已全面达成“县县通千兆、乡乡通5G、村村通宽带”目标。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-07",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "国产操作系统生态发展——鸿蒙系统设备规模",
+    "question": "鸿蒙系统生态设备总量已突破11亿台。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-08",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "数据要素市场发展——数据产业规模增长",
+    "question": "2024年我国数据产业规模较“十三五”末增长超过100%。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-09",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "数据资源利用效率——数据存储与使用矛盾",
+    "question": "我国数字中国建设面临的挑战包括四成数据仅被存储而未使用。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-10",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "人工智能领域自主创新能力——AI专利全球占比",
+    "question": "我国人工智能专利数量占全球总量的比例不足50%。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-11",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "算力基础设施建设——算力规模年均增速",
+    "question": "我国算力总规模近5年的年均增速已超20%。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-12",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "“人工智能+制造”行动目标——工业全要素数智化",
+    "question": "数字中国建设中，“人工智能+制造”的目标是推动工业全要素、全环节、全链条数智化发展。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-13",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "数字经济核心产业规模与GDP贡献",
+    "question": "截至2024年底，数字经济核心产业增加值占GDP比重达到15%以上。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-14",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "互联网普及与网民规模发展",
+    "question": "截至2025年12月，我国互联网普及率已突破80%。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u3-j-15",
+    "unit": "三单元",
+    "type": "judge",
+    "knowledgePoint": "数字惠民服务——电子社保卡覆盖情况",
+    "question": "电子社保卡覆盖人口比例超过70%。",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-01",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "“北京中轴线 —— 中国理想都城秩序的杰作” 列入《世界遗产名录》的会议是联合国教科文组织第( )届世界遗产大会",
+    "options": [
+      {
+        "key": "A",
+        "text": "45 届"
+      },
+      {
+        "key": "B",
+        "text": "48 届"
+      },
+      {
+        "key": "C",
+        "text": "46 届"
+      },
+      {
+        "key": "D",
+        "text": "47 届"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-02",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "非物质文化遗产记录工程已记录的代表性传承人人次为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2290 名"
+      },
+      {
+        "key": "B",
+        "text": "2490 名"
+      },
+      {
+        "key": "C",
+        "text": "2190 名"
+      },
+      {
+        "key": "D",
+        "text": "2390 名"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-03",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "被列入全国爱国主义教育示范基地的革命遗址、纪念场馆数量为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "491 个"
+      },
+      {
+        "key": "B",
+        "text": "481 个"
+      },
+      {
+        "key": "C",
+        "text": "461 个"
+      },
+      {
+        "key": "D",
+        "text": "471 个"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-04",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "“美美与共 —— 紫禁城生活藏美” 展览在哪个城市开幕( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "维也纳"
+      },
+      {
+        "key": "B",
+        "text": "伦敦"
+      },
+      {
+        "key": "C",
+        "text": "巴黎"
+      },
+      {
+        "key": "D",
+        "text": "柏林"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-05",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "我国非遗资源总量近( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "87 万项"
+      },
+      {
+        "key": "B",
+        "text": "107 万项"
+      },
+      {
+        "key": "C",
+        "text": "77 万项"
+      },
+      {
+        "key": "D",
+        "text": "97 万项"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-06",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "下列哪项不属于我国建设的五大国家文化公园( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "长城国家文化公园"
+      },
+      {
+        "key": "B",
+        "text": "黄河国家文化公园"
+      },
+      {
+        "key": "C",
+        "text": "西湖国家文化公园"
+      },
+      {
+        "key": "D",
+        "text": "长征国家文化公园"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-07",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "“中国信托基金(泉州)” 项目旨在提升哪个地区的世界遗产保护与管理能力( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "美洲地区"
+      },
+      {
+        "key": "B",
+        "text": "欧洲地区"
+      },
+      {
+        "key": "C",
+        "text": "亚洲地区"
+      },
+      {
+        "key": "D",
+        "text": "非洲地区"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-08",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "我国文物保护法律体系中，以《文物保护法》为统领，部门规章的数量为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "12 部"
+      },
+      {
+        "key": "B",
+        "text": "10 部"
+      },
+      {
+        "key": "C",
+        "text": "8 部"
+      },
+      {
+        "key": "D",
+        "text": "14 部"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-09",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "《长江国家文化公园建设保护规划》涉及的省(区、市)数量为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "12 个"
+      },
+      {
+        "key": "B",
+        "text": "11 个"
+      },
+      {
+        "key": "C",
+        "text": "14 个"
+      },
+      {
+        "key": "D",
+        "text": "13 个"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-10",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "我国调查登记的不可移动文物数量为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "75.7 万处"
+      },
+      {
+        "key": "B",
+        "text": "78.7 万处"
+      },
+      {
+        "key": "C",
+        "text": "76.7 万处"
+      },
+      {
+        "key": "D",
+        "text": "77.7 万处"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-11",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "下列哪项不属于中华文明的突出特质( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "和平性"
+      },
+      {
+        "key": "B",
+        "text": "排他性"
+      },
+      {
+        "key": "C",
+        "text": "包容性"
+      },
+      {
+        "key": "D",
+        "text": "连续性"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-12",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "各地发布的文物主题游径数量超( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "300 条"
+      },
+      {
+        "key": "B",
+        "text": "100 条"
+      },
+      {
+        "key": "C",
+        "text": "400 条"
+      },
+      {
+        "key": "D",
+        "text": "200 条"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-13",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "《中华人民共和国文物保护法》修订施行的时间是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2025 年 3 月 1 日"
+      },
+      {
+        "key": "B",
+        "text": "2025 年 1 月 1 日"
+      },
+      {
+        "key": "C",
+        "text": "2025 年 5 月 1 日"
+      },
+      {
+        "key": "D",
+        "text": "2025 年 7 月 1 日"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-14",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "全国非遗工坊的数量约为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "4.29 万余家"
+      },
+      {
+        "key": "B",
+        "text": "1.29 万余家"
+      },
+      {
+        "key": "C",
+        "text": "2.29 万余家"
+      },
+      {
+        "key": "D",
+        "text": "3.29 万余家"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-s-15",
+    "unit": "四单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "31 条优秀文物主题游径串起的省份数量为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "25 个"
+      },
+      {
+        "key": "B",
+        "text": "26 个"
+      },
+      {
+        "key": "C",
+        "text": "24 个"
+      },
+      {
+        "key": "D",
+        "text": "23 个"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-01",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "全球文明倡议的内容包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "搞文明对抗"
+      },
+      {
+        "key": "B",
+        "text": "加强国际人文交流合作"
+      },
+      {
+        "key": "C",
+        "text": "尊重世界文明多样性"
+      },
+      {
+        "key": "D",
+        "text": "重视文明传承和创新"
+      },
+      {
+        "key": "E",
+        "text": "弘扬全人类共同价值"
+      },
+      {
+        "key": "F",
+        "text": "推行文明霸权主义"
+      }
+    ],
+    "answer": [
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "BCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-02",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "科技在文化遗产保护中的应用体现在( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "文物造假"
+      },
+      {
+        "key": "B",
+        "text": "文物安全监管"
+      },
+      {
+        "key": "C",
+        "text": "过度开发文物"
+      },
+      {
+        "key": "D",
+        "text": "保护修复"
+      },
+      {
+        "key": "E",
+        "text": "文博智慧管理"
+      },
+      {
+        "key": "F",
+        "text": "考古发掘"
+      }
+    ],
+    "answer": [
+      "B",
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "BDEF",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-03",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "我国建设的五大国家文化公园包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "大运河国家文化公园"
+      },
+      {
+        "key": "B",
+        "text": "西湖国家文化公园"
+      },
+      {
+        "key": "C",
+        "text": "长城国家文化公园"
+      },
+      {
+        "key": "D",
+        "text": "长征国家文化公园"
+      },
+      {
+        "key": "E",
+        "text": "长江国家文化公园"
+      },
+      {
+        "key": "F",
+        "text": "黄河国家文化公园"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "ACDEF",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-04",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "文化遗产的类型主要包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "有形文化遗产"
+      },
+      {
+        "key": "B",
+        "text": "自然文化遗产"
+      },
+      {
+        "key": "C",
+        "text": "物质文化遗产"
+      },
+      {
+        "key": "D",
+        "text": "非物质文化遗产"
+      },
+      {
+        "key": "E",
+        "text": "精神文化遗产"
+      },
+      {
+        "key": "F",
+        "text": "人工文化遗产"
+      }
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "rawAnswerText": "CD",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-05",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "推动文化遗产保护成果更多惠及人民群众的方式有( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "限制公众接触文化遗产"
+      },
+      {
+        "key": "B",
+        "text": "仅对专业人士开放文物资源"
+      },
+      {
+        "key": "C",
+        "text": "找到传统文化和现代生活的连接点"
+      },
+      {
+        "key": "D",
+        "text": "将文化遗产知识融入国民教育体系"
+      },
+      {
+        "key": "E",
+        "text": "营造传承中华文明的浓厚社会氛围"
+      },
+      {
+        "key": "F",
+        "text": "提高文物活化利用水平"
+      }
+    ],
+    "answer": [
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "CDEF",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-06",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "“国风热” 兴起的表现有( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "围炉煮茶成为生活方式"
+      },
+      {
+        "key": "B",
+        "text": "穿汉服游古城成潮流"
+      },
+      {
+        "key": "C",
+        "text": "非遗技艺体验受追捧"
+      },
+      {
+        "key": "D",
+        "text": "盲目追捧西方文化"
+      },
+      {
+        "key": "E",
+        "text": "《唐宫夜宴》等视听作品走红"
+      },
+      {
+        "key": "F",
+        "text": "摒弃一切传统文化"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "rawAnswerText": "ABCE",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-07",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "文化遗产保护的社会参与主体包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "社会组织"
+      },
+      {
+        "key": "B",
+        "text": "境外势力"
+      },
+      {
+        "key": "C",
+        "text": "志愿者"
+      },
+      {
+        "key": "D",
+        "text": "科研机构"
+      },
+      {
+        "key": "E",
+        "text": "企业"
+      },
+      {
+        "key": "F",
+        "text": "普通民众"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "ACDEF",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-08",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "文化遗产保护的协同机制包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "社会力量协同"
+      },
+      {
+        "key": "B",
+        "text": "部门和区域协同"
+      },
+      {
+        "key": "C",
+        "text": "文旅融合协同"
+      },
+      {
+        "key": "D",
+        "text": "国际合作协同"
+      },
+      {
+        "key": "E",
+        "text": "闭门造车式保护"
+      },
+      {
+        "key": "F",
+        "text": "单一部门独立管理"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "rawAnswerText": "ABC",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-09",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "中国在全球文化遗产保护领域的实践包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "开展联合考古"
+      },
+      {
+        "key": "B",
+        "text": "分享保护技术与实践经验"
+      },
+      {
+        "key": "C",
+        "text": "主导全球文化遗产规则制定"
+      },
+      {
+        "key": "D",
+        "text": "单方面占有国际文化遗产资源"
+      },
+      {
+        "key": "E",
+        "text": "参与世界遗产保护"
+      },
+      {
+        "key": "F",
+        "text": "与上百个国家签署文化文物合作协议"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "ABEF",
+    "explanation": ""
+  },
+  {
+    "id": "u4-m-10",
+    "unit": "四单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "考古遗址公园的作用体现在( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "提供公共文化空间"
+      },
+      {
+        "key": "B",
+        "text": "保护文物遗址"
+      },
+      {
+        "key": "C",
+        "text": "开展考古研究"
+      },
+      {
+        "key": "D",
+        "text": "促进文旅融合"
+      },
+      {
+        "key": "E",
+        "text": "展示中华文明"
+      },
+      {
+        "key": "F",
+        "text": "单纯的商业开发"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-01",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "文化遗产保护主要是政府部门的工作，与普通民众无关。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-02",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "推动马克思主义基本原理同中华优秀传统文化相结合是文化遗产保护的重要方向。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-03",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国是《保护非物质文化遗产公约》的积极践行者。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-04",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国在文化遗产保护领域仅借鉴国际经验，未输出自身技术和方案。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-05",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "“何以文明” 数字大展仅在国内展出，未走向国际。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-06",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "文化遗产是增强历史自觉、坚定文化自信的强大支撑。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-07",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "文物活化利用就是对文物进行尽可能的商业开发。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-08",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "全球文明倡议为文化遗产的国际交流互鉴提供了指引。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-09",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "我国文物保护法律体系尚未形成，缺乏相关法规支撑，需要继续加强相关立法。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-10",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "文化遗产是赓续文明根脉、承载民族记忆的重要载体。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-11",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "长城保护修缮已从抢救性保护走向研究性修缮。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-12",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "非遗工坊的建设对带动就业、增收致富实际作用不太大。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-13",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中华文明是世界上唯一绵延不断且以国家形态发展至今的伟大文明。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-14",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "科技在文化遗产保护的考古、修复、管理等环节均发挥了重要作用。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u4-j-15",
+    "unit": "四单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国始终秉持开放包容的态度参与全球文化遗产保护。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-01",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "第一次世界大战卷入的人口数量约为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "15亿以上"
+      },
+      {
+        "key": "B",
+        "text": "25亿以上"
+      },
+      {
+        "key": "C",
+        "text": "10亿以上"
+      },
+      {
+        "key": "D",
+        "text": "20亿以上"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-02",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "中美三个联合公报中，1972年签署的是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "中美建交公报"
+      },
+      {
+        "key": "B",
+        "text": "《中美联合公报》"
+      },
+      {
+        "key": "C",
+        "text": "八一七公报"
+      },
+      {
+        "key": "D",
+        "text": "中美经贸公报"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-03",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "全球安全倡议提出的时间是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2023年5月21日"
+      },
+      {
+        "key": "B",
+        "text": "2023年4月21日"
+      },
+      {
+        "key": "C",
+        "text": "2022年5月21日"
+      },
+      {
+        "key": "D",
+        "text": "2022年4月21日"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-04",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "中国连续多少年保持俄罗斯最大贸易伙伴地位( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "12年"
+      },
+      {
+        "key": "B",
+        "text": "14年"
+      },
+      {
+        "key": "C",
+        "text": "15年"
+      },
+      {
+        "key": "D",
+        "text": "13年"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-05",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "全球文明倡议提出的时间是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2023年3月15日"
+      },
+      {
+        "key": "B",
+        "text": "2025年3月15日"
+      },
+      {
+        "key": "C",
+        "text": "2024年3月15日"
+      },
+      {
+        "key": "D",
+        "text": "2022年3月15日"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-06",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "《巴黎协定》签署于哪一年( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2017年"
+      },
+      {
+        "key": "B",
+        "text": "2019年"
+      },
+      {
+        "key": "C",
+        "text": "2013年"
+      },
+      {
+        "key": "D",
+        "text": "2015年"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-07",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "2024年中欧年贸易额达到( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "8858亿美元"
+      },
+      {
+        "key": "B",
+        "text": "9858亿美元"
+      },
+      {
+        "key": "C",
+        "text": "7858亿美元"
+      },
+      {
+        "key": "D",
+        "text": "6858亿美元"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-08",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "2025年美国对中国进出口额占美国进出口总值的比例为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "9.8%"
+      },
+      {
+        "key": "B",
+        "text": "6.8%"
+      },
+      {
+        "key": "C",
+        "text": "7.8%"
+      },
+      {
+        "key": "D",
+        "text": "8.8%"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-09",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "2025年中美经贸磋商的轮次为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "3轮"
+      },
+      {
+        "key": "B",
+        "text": "6轮"
+      },
+      {
+        "key": "C",
+        "text": "4轮"
+      },
+      {
+        "key": "D",
+        "text": "5轮"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "rawAnswerText": "D",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-10",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "全球发展倡议提出的时间是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2021年9月21日"
+      },
+      {
+        "key": "B",
+        "text": "2020年9月21日"
+      },
+      {
+        "key": "C",
+        "text": "2022年9月21日"
+      },
+      {
+        "key": "D",
+        "text": "2023年9月21日"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-11",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "2024年10月中旬至2025年10月中旬，G20成员受关税影响的贸易额较上一报告期激增约( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "5倍"
+      },
+      {
+        "key": "B",
+        "text": "4倍"
+      },
+      {
+        "key": "C",
+        "text": "3倍"
+      },
+      {
+        "key": "D",
+        "text": "2倍"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-12",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "第二次世界大战军民伤亡人数超过( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "5000万人"
+      },
+      {
+        "key": "B",
+        "text": "1亿人"
+      },
+      {
+        "key": "C",
+        "text": "1.5亿人"
+      },
+      {
+        "key": "D",
+        "text": "8000万人"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "B",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-13",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "2026年1月，美国总统特朗普宣布退出的国际组织数量为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "76个"
+      },
+      {
+        "key": "B",
+        "text": "56个"
+      },
+      {
+        "key": "C",
+        "text": "66个"
+      },
+      {
+        "key": "D",
+        "text": "86个"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-14",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "1975年中欧年贸易额为( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "24亿美元"
+      },
+      {
+        "key": "B",
+        "text": "44亿美元"
+      },
+      {
+        "key": "C",
+        "text": "54亿美元"
+      },
+      {
+        "key": "D",
+        "text": "34亿美元"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "A",
+    "explanation": ""
+  },
+  {
+    "id": "u5-s-15",
+    "unit": "五单元",
+    "type": "single",
+    "knowledgePoint": "",
+    "question": "全球治理倡议提出的时间是( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "2024年10月1日"
+      },
+      {
+        "key": "B",
+        "text": "2024年9月1日"
+      },
+      {
+        "key": "C",
+        "text": "2025年9月1日"
+      },
+      {
+        "key": "D",
+        "text": "2025年10月1日"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "rawAnswerText": "C",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-01",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "中欧人文交流的重要平台包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "欧美同学会"
+      },
+      {
+        "key": "B",
+        "text": "法国文化中心"
+      },
+      {
+        "key": "C",
+        "text": "西班牙塞万提斯学院"
+      },
+      {
+        "key": "D",
+        "text": "孔子学院"
+      },
+      {
+        "key": "E",
+        "text": "中国文化中心"
+      },
+      {
+        "key": "F",
+        "text": "德国歌德学院"
+      }
+    ],
+    "answer": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "BCDEF",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-02",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "G20在全球经济发展中的作用包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "在全球事务中举足轻重"
+      },
+      {
+        "key": "B",
+        "text": "2008年升格为领导人会议"
+      },
+      {
+        "key": "C",
+        "text": "推动世界经济稳定复苏"
+      },
+      {
+        "key": "D",
+        "text": "涵盖面广、代表性强"
+      },
+      {
+        "key": "E",
+        "text": "推行贸易保护政策"
+      },
+      {
+        "key": "F",
+        "text": "主导全球单边贸易"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "rawAnswerText": "ABCD",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-03",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "第二次世界大战的轴心国包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "德国"
+      },
+      {
+        "key": "B",
+        "text": "日本"
+      },
+      {
+        "key": "C",
+        "text": "俄罗斯"
+      },
+      {
+        "key": "D",
+        "text": "意大利"
+      },
+      {
+        "key": "E",
+        "text": "英国"
+      },
+      {
+        "key": "F",
+        "text": "奥匈帝国"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "rawAnswerText": "ABD",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-04",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "中国关于大国作用的政策主张要求大国带头做到( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "讲诚信"
+      },
+      {
+        "key": "B",
+        "text": "讲平等"
+      },
+      {
+        "key": "C",
+        "text": "讲法治"
+      },
+      {
+        "key": "D",
+        "text": "讲对抗"
+      },
+      {
+        "key": "E",
+        "text": "讲霸权"
+      },
+      {
+        "key": "F",
+        "text": "讲合作"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "F"
+    ],
+    "rawAnswerText": "ABCF",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-05",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "当前全球治理体系存在的主要问题有( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "权威性遭到侵蚀"
+      },
+      {
+        "key": "B",
+        "text": "公平性彻底丧失"
+      },
+      {
+        "key": "C",
+        "text": "有效性亟待提升"
+      },
+      {
+        "key": "D",
+        "text": "透明性基本为零"
+      },
+      {
+        "key": "E",
+        "text": "参与性完全缺失"
+      },
+      {
+        "key": "F",
+        "text": "代表性严重不足"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "F"
+    ],
+    "rawAnswerText": "ACF",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-06",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "2025年中美经贸磋商的举办地点包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "瑞典斯德哥尔摩"
+      },
+      {
+        "key": "B",
+        "text": "西班牙马德里"
+      },
+      {
+        "key": "C",
+        "text": "马来西亚吉隆坡"
+      },
+      {
+        "key": "D",
+        "text": "法国巴黎"
+      },
+      {
+        "key": "E",
+        "text": "瑞士日内瓦"
+      },
+      {
+        "key": "F",
+        "text": "英国伦敦"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "ABCEF",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-07",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "中国特色大国外交的定位包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "单边主义的推动者"
+      },
+      {
+        "key": "B",
+        "text": "周边环境的主心骨"
+      },
+      {
+        "key": "C",
+        "text": "世界和平的稳定锚"
+      },
+      {
+        "key": "D",
+        "text": "全球发展的主引擎"
+      },
+      {
+        "key": "E",
+        "text": "国际秩序的定盘星"
+      },
+      {
+        "key": "F",
+        "text": "国际道义的压舱石"
+      }
+    ],
+    "answer": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "rawAnswerText": "BCDEF",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-08",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "第一次世界大战的同盟国包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "法国"
+      },
+      {
+        "key": "B",
+        "text": "奥斯曼帝国"
+      },
+      {
+        "key": "C",
+        "text": "日本"
+      },
+      {
+        "key": "D",
+        "text": "德国"
+      },
+      {
+        "key": "E",
+        "text": "意大利"
+      },
+      {
+        "key": "F",
+        "text": "奥匈帝国"
+      }
+    ],
+    "answer": [
+      "B",
+      "D",
+      "F"
+    ],
+    "rawAnswerText": "BDF",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-09",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "中俄关系的发展阶段包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "全面战略协作伙伴"
+      },
+      {
+        "key": "B",
+        "text": "建设性伙伴"
+      },
+      {
+        "key": "C",
+        "text": "相互视为友好国家"
+      },
+      {
+        "key": "D",
+        "text": "战略协作伙伴"
+      },
+      {
+        "key": "E",
+        "text": "新时代全面战略协作伙伴"
+      },
+      {
+        "key": "F",
+        "text": "同盟合作伙伴"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "rawAnswerText": "ABCDE",
+    "explanation": ""
+  },
+  {
+    "id": "u5-m-10",
+    "unit": "五单元",
+    "type": "multiple",
+    "knowledgePoint": "",
+    "question": "中国提出的“全球倡议”包括( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "全球科技倡议"
+      },
+      {
+        "key": "B",
+        "text": "全球文明倡议"
+      },
+      {
+        "key": "C",
+        "text": "全球安全倡议"
+      },
+      {
+        "key": "D",
+        "text": "全球治理倡议"
+      },
+      {
+        "key": "E",
+        "text": "全球贸易倡议"
+      },
+      {
+        "key": "F",
+        "text": "全球发展倡议"
+      }
+    ],
+    "answer": [
+      "B",
+      "C",
+      "D",
+      "F"
+    ],
+    "rawAnswerText": "BCDF",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-01",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "大国关系牵动国际形势，国际形势演变深刻影响国内发展。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-02",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国在热点问题解决中坚持拱火浇油、拉偏架的原则。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-03",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国在周边外交中不搞地缘争夺和势力范围划分。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-04",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国致力于推动构建和平共处、总体稳定、均衡发展的大国关系格局。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-05",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国提出的四大全球倡议为世界注入了稳定性和确定性。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-06",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "2026年全球经济增速预计高于2025年的增速。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-07",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "美国是中国最大的能源供应国。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-08",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国坚定维护以国际法为基础的国际秩序。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-09",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中俄关系是当今世界最不稳定、最不成熟的大国关系之一。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-10",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "台湾问题是中美关系第一条不可逾越的红线。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-11",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "大国协调是世界经济衰退的重要原因。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-12",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "人类惨遭战乱的主要原因是发展中国家之间的利益冲突。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "rawAnswerText": "错",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-13",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中国特色大国外交的国际影响力、道义感召力正在不断提升。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-14",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "中俄双方在涉及彼此核心利益问题上始终坚定相互支持。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  },
+  {
+    "id": "u5-j-15",
+    "unit": "五单元",
+    "type": "judge",
+    "knowledgePoint": "",
+    "question": "国际调解院是首个专门以调解方式解决国际争端的政府间国际组织。( )",
+    "options": [
+      {
+        "key": "A",
+        "text": "对"
+      },
+      {
+        "key": "B",
+        "text": "错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "rawAnswerText": "对",
+    "explanation": ""
+  }
+];
+
+</script>
+  <script>
+(function () {
+  "use strict";
+
+  const QUESTIONS = Array.isArray(window.QUESTIONS) ? window.QUESTIONS : [];
+  const TYPE_NAMES = {
+    single: "单选",
+    multiple: "多选",
+    judge: "判断",
+  };
+  const WRONG_KEY = "policyPracticeWrongIds:v1";
+
+  const homeView = document.getElementById("homeView");
+  const quizView = document.getElementById("quizView");
+  const resultView = document.getElementById("resultView");
+  const headerStats = document.getElementById("headerStats");
+  const unitButtons = document.getElementById("unitButtons");
+  const typeButtons = document.getElementById("typeButtons");
+  const randomCount = document.getElementById("randomCount");
+  const shuffleQuestions = document.getElementById("shuffleQuestions");
+  const shuffleOptions = document.getElementById("shuffleOptions");
+  const questionCard = document.getElementById("questionCard");
+  const quizProgress = document.getElementById("quizProgress");
+  const progressFill = document.getElementById("progressFill");
+  const submitAnswer = document.getElementById("submitAnswer");
+  const nextQuestion = document.getElementById("nextQuestion");
+  const prevQuestion = document.getElementById("prevQuestion");
+  const resultStats = document.getElementById("resultStats");
+  const wrongList = document.getElementById("wrongList");
+
+  const state = {
+    queue: [],
+    index: 0,
+    answers: new Map(),
+    results: new Map(),
+    currentWrongIds: new Set(),
+  };
+
+  function readWrongIds() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(WRONG_KEY) || "[]");
+      return new Set(Array.isArray(parsed) ? parsed : []);
+    } catch (error) {
+      return new Set();
+    }
+  }
+
+  function writeWrongIds(ids) {
+    try {
+      localStorage.setItem(WRONG_KEY, JSON.stringify(Array.from(ids)));
+    } catch (error) {
+      // iOS file:// 下 localStorage 可能不可用，忽略以保证答题不中断
+    }
+  }
+
+  function shuffle(items) {
+    const copy = items.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function optionText(q, key) {
+    const option = q.options.find((item) => item.key === key);
+    return option ? `${key}. ${option.text}` : key;
+  }
+
+  function answerText(q) {
+    return q.answer.map((key) => optionText(q, key)).join("；");
+  }
+
+  function normalize(keys) {
+    return keys.slice().sort().join("|");
+  }
+
+  function isCorrect(q, selected) {
+    return normalize(selected) === normalize(q.answer);
+  }
+
+  function getSelectedKeys() {
+    return Array.from(questionCard.querySelectorAll("input[name='answer']:checked")).map((input) => input.value);
+  }
+
+  function setView(view) {
+    homeView.classList.toggle("hidden", view !== "home");
+    quizView.classList.toggle("hidden", view !== "quiz");
+    resultView.classList.toggle("hidden", view !== "result");
+  }
+
+  function updateHeader() {
+    const total = QUESTIONS.length;
+    const single = QUESTIONS.filter((q) => q.type === "single").length;
+    const multiple = QUESTIONS.filter((q) => q.type === "multiple").length;
+    const judge = QUESTIONS.filter((q) => q.type === "judge").length;
+    const wrong = readWrongIds().size;
+    headerStats.textContent = `共${total}题 · 单选${single} · 多选${multiple} · 判断${judge} · 错题${wrong}`;
+  }
+
+  function buildHome() {
+    const units = Array.from(new Set(QUESTIONS.map((q) => q.unit)));
+    unitButtons.innerHTML = units.map((unit) => (
+      `<button class="filter-button" type="button" data-unit="${escapeAttr(unit)}">${escapeHtml(unit)}</button>`
+    )).join("");
+
+    typeButtons.innerHTML = Object.entries(TYPE_NAMES).map(([type, name]) => (
+      `<button class="filter-button" type="button" data-type="${type}">${name}</button>`
+    )).join("");
+  }
+
+  function startSession(config) {
+    const wrongIds = readWrongIds();
+    let pool = QUESTIONS.slice();
+
+    if (config.unit) pool = pool.filter((q) => q.unit === config.unit);
+    if (config.type) pool = pool.filter((q) => q.type === config.type);
+    if (config.wrongOnly) pool = pool.filter((q) => wrongIds.has(q.id));
+
+    if (pool.length === 0) {
+      alert("当前条件下没有题目。");
+      return;
+    }
+
+    if (config.random) {
+      const count = Math.max(1, Math.min(Number(randomCount.value) || 30, pool.length));
+      pool = sampleByUnit(pool, count);
+    }
+    const queue = shuffleQuestions.checked ? shuffle(pool) : pool.slice();
+
+    state.queue = queue.map((q) => ({
+      question: q,
+      options: shouldShuffleOptions(q) ? shuffle(q.options) : q.options.slice(),
+    }));
+    state.index = 0;
+    state.answers = new Map();
+    state.results = new Map();
+    state.currentWrongIds = new Set();
+
+    setView("quiz");
+    renderQuestion();
+  }
+
+  function sampleByUnit(pool, count) {
+    const units = Array.from(new Set(pool.map((q) => q.unit)));
+    const groups = units.map((unit) => ({
+      unit,
+      items: shuffle(pool.filter((q) => q.unit === unit)),
+      selected: [],
+    }));
+    const baseQuota = Math.floor(count / groups.length);
+    const extraUnits = new Set(shuffle(groups).slice(0, count % groups.length).map((group) => group.unit));
+    let deficit = 0;
+
+    for (const group of groups) {
+      const quota = baseQuota + (extraUnits.has(group.unit) ? 1 : 0);
+      const picked = group.items.splice(0, quota);
+      group.selected.push(...picked);
+      deficit += quota - picked.length;
+    }
+
+    while (deficit > 0) {
+      const availableGroups = groups.filter((group) => group.items.length > 0);
+      if (availableGroups.length === 0) break;
+
+      for (const group of shuffle(availableGroups)) {
+        if (deficit === 0) break;
+        group.selected.push(group.items.shift());
+        deficit--;
+      }
+    }
+
+    return groups.flatMap((group) => group.selected);
+  }
+
+  function shouldShuffleOptions(q) {
+    if (q.type === "judge") return false;
+    return Boolean(shuffleOptions.checked);
+  }
+
+  function renderQuestion() {
+    const item = state.queue[state.index];
+    const q = item.question;
+    const saved = state.answers.get(q.id) || [];
+    const result = state.results.get(q.id) || null;
+    const disabled = Boolean(result);
+    const inputType = q.type === "multiple" ? "checkbox" : "radio";
+
+    quizProgress.textContent = `${state.index + 1} / ${state.queue.length}`;
+    progressFill.style.width = `${((state.index + 1) / state.queue.length) * 100}%`;
+    prevQuestion.disabled = state.index === 0;
+    submitAnswer.classList.toggle("hidden", Boolean(result));
+    nextQuestion.classList.toggle("hidden", !result);
+    nextQuestion.textContent = state.index === state.queue.length - 1 ? "查看结果" : "下一题";
+
+    questionCard.innerHTML = `
+      <div class="question-meta">
+        <span class="tag">${escapeHtml(q.unit)}</span>
+        <span class="tag">${TYPE_NAMES[q.type]}</span>
+        ${q.knowledgePoint ? `<span class="tag">${escapeHtml(q.knowledgePoint)}</span>` : ""}
+      </div>
+      <div class="question-title">${escapeHtml(q.question)}</div>
+      <div class="option-list">
+        ${item.options.map((option) => renderOption(q, option, inputType, saved, disabled, result)).join("")}
+      </div>
+      ${result ? renderFeedback(q, result.correct) : ""}
+    `;
+  }
+
+  function renderOption(q, option, inputType, saved, disabled, result) {
+    const checked = saved.includes(option.key) ? "checked" : "";
+    const locked = disabled ? "disabled" : "";
+    let className = "option-item";
+    if (result && q.answer.includes(option.key)) className += " correct";
+    if (result && !result.correct && result.selected.includes(option.key) && !q.answer.includes(option.key)) className += " wrong";
+
+    return `
+      <label class="${className}">
+        <input type="${inputType}" name="answer" value="${option.key}" ${checked} ${locked}>
+        <span class="option-key">${option.key}</span>
+        <span>${escapeHtml(option.text)}</span>
+      </label>
+    `;
+  }
+
+  function renderFeedback(q, correct) {
+    const statusClass = correct ? "good" : "bad";
+    const statusText = correct ? "回答正确" : "回答错误";
+    return `
+      <div class="feedback ${statusClass}">
+        <p class="answer-line">${statusText} · 正确答案：${escapeHtml(answerText(q))}</p>
+        ${q.explanation ? `<p class="explanation">${escapeHtml(q.explanation)}</p>` : ""}
+      </div>
+    `;
+  }
+
+  function submitCurrent() {
+    const item = state.queue[state.index];
+    const q = item.question;
+    const selected = getSelectedKeys();
+    if (selected.length === 0) {
+      alert("请先选择答案。");
+      return;
+    }
+
+    state.answers.set(q.id, selected);
+    const correct = isCorrect(q, selected);
+
+    if (!correct) {
+      state.currentWrongIds.add(q.id);
+      const wrongIds = readWrongIds();
+      wrongIds.add(q.id);
+      writeWrongIds(wrongIds);
+      updateHeader();
+    }
+
+    state.results.set(q.id, { correct, selected });
+    renderQuestion();
+  }
+
+  function goNext() {
+    if (state.index < state.queue.length - 1) {
+      state.index++;
+      renderQuestion();
+    } else {
+      renderResult();
+    }
+  }
+
+  function goPrev() {
+    if (state.index === 0) return;
+    state.index--;
+    renderQuestion();
+  }
+
+  function renderResult() {
+    let correct = 0;
+    const wrongItems = [];
+
+    for (const item of state.queue) {
+      const q = item.question;
+      const selected = state.answers.get(q.id) || [];
+      if (isCorrect(q, selected)) {
+        correct++;
+      } else {
+        wrongItems.push({ q, selected });
+        state.currentWrongIds.add(q.id);
+      }
+    }
+
+    const wrongIds = readWrongIds();
+    for (const item of wrongItems) wrongIds.add(item.q.id);
+    writeWrongIds(wrongIds);
+    updateHeader();
+
+    const total = state.queue.length;
+    const wrong = total - correct;
+    const rate = total ? Math.round((correct / total) * 100) : 0;
+    resultStats.innerHTML = [
+      ["总题数", total],
+      ["正确数", correct],
+      ["错误数", wrong],
+      ["正确率", `${rate}%`],
+    ].map(([label, value]) => `
+      <div class="result-item">
+        <span class="result-value">${value}</span>
+        <span class="result-label">${label}</span>
+      </div>
+    `).join("");
+
+    wrongList.innerHTML = wrongItems.length ? wrongItems.map(({ q, selected }, index) => `
+      <article class="wrong-card">
+        <h3>${index + 1}. ${escapeHtml(q.question)}</h3>
+        <p class="muted">${escapeHtml(q.unit)} · ${TYPE_NAMES[q.type]}${q.knowledgePoint ? ` · ${escapeHtml(q.knowledgePoint)}` : ""}</p>
+        <p>你的答案：${selected.length ? escapeHtml(selected.map((key) => optionText(q, key)).join("；")) : "未作答"}</p>
+        <p>正确答案：${escapeHtml(answerText(q))}</p>
+        ${q.explanation ? `<p class="muted">${escapeHtml(q.explanation)}</p>` : ""}
+      </article>
+    `).join("") : `<p class="muted">本轮没有错题。</p>`;
+
+    setView("result");
+  }
+
+  function clearWrong() {
+    if (!confirm("确认清空本地错题记录？")) return;
+    writeWrongIds(new Set());
+    updateHeader();
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function escapeAttr(value) {
+    return escapeHtml(value);
+  }
+
+  document.querySelector("[data-action='all']").addEventListener("click", () => startSession({}));
+  document.querySelector("[data-action='wrong']").addEventListener("click", () => startSession({ wrongOnly: true }));
+  document.querySelector("[data-action='random']").addEventListener("click", () => startSession({ random: true }));
+  document.querySelector("[data-action='clearWrong']").addEventListener("click", clearWrong);
+
+  unitButtons.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-unit]");
+    if (!button) return;
+    startSession({ unit: button.dataset.unit });
+  });
+
+  typeButtons.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-type]");
+    if (!button) return;
+    startSession({ type: button.dataset.type });
+  });
+
+  submitAnswer.addEventListener("click", submitCurrent);
+  nextQuestion.addEventListener("click", goNext);
+  prevQuestion.addEventListener("click", goPrev);
+  document.getElementById("backHome").addEventListener("click", () => setView("home"));
+  document.getElementById("resultHome").addEventListener("click", () => setView("home"));
+
+  buildHome();
+  updateHeader();
+})();
+
+</script>
+</body>
+</html>
