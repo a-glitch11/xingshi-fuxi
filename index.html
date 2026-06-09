@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>形势与政策期末复习题库</title>
+  <title>刷题练习</title>
   <style>
 :root {
   color-scheme: light;
@@ -458,8 +458,8 @@ h3 {
 <body>
   <header class="app-header">
     <div>
-      <p class="eyebrow">离线题库</p>
-      <h1>形势与政策期末复习</h1>
+      <p class="eyebrow">刷题练习</p>
+      <h1>刷题练习</h1>
     </div>
     <div class="header-stats" id="headerStats"></div>
   </header>
@@ -479,7 +479,7 @@ h3 {
 
       <div class="control-row">
         <label for="randomCount">随机抽题数</label>
-        <input id="randomCount" type="number" min="1" max="160" value="30">
+        <input id="randomCount" type="number" min="1" value="30">
         <label class="check-line">
           <input id="shuffleQuestions" type="checkbox" checked>
           打乱题目
@@ -532,6 +532,7 @@ h3 {
   <script>
 // 形势与政策期末复习题库 - 自动结构化抽取自 汇总.txt（新版）
 // 4组：二单元/三单元/四单元/五单元，共 160 题
+window.QUIZ_META = { subject: "形势与政策", description: "期末复习题库" };
 window.QUESTIONS = [
   {
     "id": "u2-s-01",
@@ -5258,13 +5259,19 @@ window.QUESTIONS = [
 (function () {
   "use strict";
 
+  const DEFAULT_META = { subject: "刷题练习", description: "刷题练习" };
+  const rawMeta = window.QUIZ_META && typeof window.QUIZ_META === "object" ? window.QUIZ_META : {};
+  const QUIZ_META = {
+    subject: String(rawMeta.subject || DEFAULT_META.subject),
+    description: String(rawMeta.description || DEFAULT_META.description),
+  };
   const QUESTIONS = Array.isArray(window.QUESTIONS) ? window.QUESTIONS : [];
   const TYPE_NAMES = {
     single: "单选",
     multiple: "多选",
     judge: "判断",
   };
-  const WRONG_KEY = "policyPracticeWrongIds:v1";
+  const WRONG_KEY = `quizWrongIds:${QUIZ_META.subject}:v1`;
 
   const homeView = document.getElementById("homeView");
   const quizView = document.getElementById("quizView");
@@ -5291,6 +5298,18 @@ window.QUESTIONS = [
     results: new Map(),
     currentWrongIds: new Set(),
   };
+
+  function applyMeta() {
+    document.title = QUIZ_META.subject;
+    const title = document.querySelector(".app-header h1");
+    const subtitle = document.querySelector(".app-header .eyebrow");
+    if (title) title.textContent = QUIZ_META.subject;
+    if (subtitle) subtitle.textContent = QUIZ_META.description;
+    randomCount.max = String(Math.max(1, QUESTIONS.length));
+    if (Number(randomCount.value) > QUESTIONS.length && QUESTIONS.length > 0) {
+      randomCount.value = String(QUESTIONS.length);
+    }
+  }
 
   function readWrongIds() {
     try {
@@ -5397,36 +5416,59 @@ window.QUESTIONS = [
     renderQuestion();
   }
 
-  function sampleByUnit(pool, count) {
-    const units = Array.from(new Set(pool.map((q) => q.unit)));
-    const groups = units.map((unit) => ({
-      unit,
-      items: shuffle(pool.filter((q) => q.unit === unit)),
-      selected: [],
-    }));
-    const baseQuota = Math.floor(count / groups.length);
-    const extraUnits = new Set(shuffle(groups).slice(0, count % groups.length).map((group) => group.unit));
+  // 把 count 个名额在若干分桶间均摊：基础均分 + 余数随机分配 + 某桶不足时把缺额补给其他还有余量的桶。
+  // buckets: [{ items: 已打乱的候选数组, selected: [] }]，原地修改并返回实际抽出的项目数组。
+  function distributeQuota(buckets, count) {
+    if (buckets.length === 0) return [];
+    const baseQuota = Math.floor(count / buckets.length);
+    const extra = new Set(shuffle(buckets).slice(0, count % buckets.length));
     let deficit = 0;
 
-    for (const group of groups) {
-      const quota = baseQuota + (extraUnits.has(group.unit) ? 1 : 0);
-      const picked = group.items.splice(0, quota);
-      group.selected.push(...picked);
+    for (const bucket of buckets) {
+      const quota = baseQuota + (extra.has(bucket) ? 1 : 0);
+      const picked = bucket.items.splice(0, quota);
+      bucket.selected.push(...picked);
       deficit += quota - picked.length;
     }
 
     while (deficit > 0) {
-      const availableGroups = groups.filter((group) => group.items.length > 0);
-      if (availableGroups.length === 0) break;
-
-      for (const group of shuffle(availableGroups)) {
+      const available = buckets.filter((bucket) => bucket.items.length > 0);
+      if (available.length === 0) break;
+      for (const bucket of shuffle(available)) {
         if (deficit === 0) break;
-        group.selected.push(group.items.shift());
+        bucket.selected.push(bucket.items.shift());
         deficit--;
       }
     }
 
-    return groups.flatMap((group) => group.selected);
+    return buckets.flatMap((bucket) => bucket.selected);
+  }
+
+  // 双层均摊：先在各单元间均摊名额，再在每个单元内部按题型(单选/多选/判断)均摊。
+  function sampleByUnit(pool, count) {
+    const units = Array.from(new Set(pool.map((q) => q.unit)));
+    const unitBuckets = units.map((unit) => ({
+      unit,
+      items: shuffle(pool.filter((q) => q.unit === unit)),
+      selected: [],
+    }));
+    // 第一层：决定每个单元抽多少题
+    distributeQuota(unitBuckets, count);
+    const unitQuota = unitBuckets.map((b) => b.selected.length);
+
+    // 第二层：对每个单元，按题型均摊抽取该单元应得的题数
+    const result = [];
+    unitBuckets.forEach((bucket, i) => {
+      const quota = unitQuota[i];
+      const byType = ["single", "multiple", "judge"].map((type) => ({
+        type,
+        items: shuffle(pool.filter((q) => q.unit === bucket.unit && q.type === type)),
+        selected: [],
+      })).filter((b) => b.items.length > 0);
+      result.push(...distributeQuota(byType, quota));
+    });
+
+    return result;
   }
 
   function shouldShuffleOptions(q) {
@@ -5619,6 +5661,7 @@ window.QUESTIONS = [
   document.getElementById("backHome").addEventListener("click", () => setView("home"));
   document.getElementById("resultHome").addEventListener("click", () => setView("home"));
 
+  applyMeta();
   buildHome();
   updateHeader();
 })();
